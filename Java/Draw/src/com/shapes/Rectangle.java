@@ -12,4 +12,10 @@ public class Rectangle extends Shape{
 		
 	}
 
+	@Override
+	public Shape createObject() {
+		
+		return new Rectangle();
+	}
+
 }

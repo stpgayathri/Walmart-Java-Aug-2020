@@ -2,8 +2,9 @@ package com.shapes;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.io.Serializable;
 
-public abstract class Shape {
+public abstract class Shape implements Serializable{
 
 	//state
 	protected Point start;
@@ -32,13 +33,15 @@ public abstract class Shape {
 	
 	
 	//behaviors
-		public abstract void draw(Graphics graphics);
+	public abstract void draw(Graphics graphics);
 		
 		
-		public void displayCoordinates() {
+	public void displayCoordinates() {
 			System.out.println("start: " + start);
 			System.out.println("end: " + end);
-		}
+	}
+	
+	public abstract Shape createObject();
 }
 
 

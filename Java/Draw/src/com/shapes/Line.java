@@ -16,5 +16,11 @@ public class Line extends Shape{
 		// TODO Auto-generated method stub
 		super.displayCoordinates();
 	}
+
+	@Override
+	public Shape createObject() {
+		
+		return new Line();
+	}
 	
 }
