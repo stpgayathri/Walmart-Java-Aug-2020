@@ -10,7 +10,10 @@ public class ExecutorServiceDemo {
 	public static void main(String[] args) {
 		
 		
-		ExecutorService executorService = Executors.newCachedThreadPool();
+		ExecutorService executorService 
+							//= Executors.newCachedThreadPool();
+								//= Executors.newFixedThreadPool(20);
+								= Executors.newSingleThreadExecutor();
 	
 		
 		for (int i = 0; i < 10; i++) {

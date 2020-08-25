@@ -7,8 +7,8 @@ class TestThread implements Runnable{
 	public void run() {
 		
 		MainThread.printThreadInfo();
-		for (int i = 0; i < 400; i++) {
-			System.out.println("In runnable" + i);
+		for (int i = 0; i < 100; i++) {
+			System.out.println("In TestThread" + i);
 		}
 		System.out.println("Runnable over");
 	}
@@ -20,9 +20,11 @@ public class DemoThread extends Thread {
 	public void run() {
 	
 		MainThread.printThreadInfo();
-		for (int i = 0; i < 200; i++) {
+		
+		for (int i = 0; i < 100; i++) {
 			System.out.println("In demo thread" + i);
 		}
+		
 		System.out.println("Demo thread over");
 	}
 
@@ -35,11 +37,13 @@ public class DemoThread extends Thread {
 		
 		DemoThread demoThread = new DemoThread();
 		demoThread.setName("DemoThread");
+		//demoThread.setDaemon(true);
 		demoThread.start();
 		
 		TestThread runnable= new TestThread();
+		
 		Thread testThread = new Thread(runnable);
-		testThread.setDaemon(true);
+		//testThread.setDaemon(true);
 		testThread.start();
 		
 		System.out.println("Main over");

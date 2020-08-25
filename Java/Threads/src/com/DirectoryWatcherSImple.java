@@ -4,45 +4,42 @@ import java.io.File;
 import java.util.Scanner;
 
 public class DirectoryWatcherSImple {
-	
+
 	private String directoryPath;
 	private int filesCount;
-	
-	
+
 	public DirectoryWatcherSImple(String directoryPath) {
 		super();
 		this.directoryPath = directoryPath;
 		File directory = new File(this.directoryPath);
-		String [] allFiles = directory.list();
+		String[] allFiles = directory.list();
 		filesCount = allFiles.length;
+		System.out.println(filesCount);
 	}
+
 	private void watchDir() {
-	
-		File directory = new File(this.directoryPath);
-		String [] allFiles = directory.list();
-		//System.out.println(allFiles.length);
-		if(allFiles.length != this.filesCount) {
+
+		while (true) {
+			File directory = new File(this.directoryPath);
+			String[] allFiles = directory.list();
 			
-			this.filesCount = allFiles.length;
-			System.out.println("Directory Changed: " + this.filesCount);
+
+			if (allFiles.length != this.filesCount) {
+
+				this.filesCount = allFiles.length;
+				System.out.println("Directory Changed: " + this.filesCount);
+			} else {
+				//System.out.println("No change");
+			}
 		}
-		else {
-			System.out.println("No change");
-		}
-		
+
 	}
-	
-
-
-
-
 
 	public static void main(String[] args) {
-		
+
 		DirectoryWatcherSImple directoryWatcherThread = new DirectoryWatcherSImple("C:\\temp");
 		directoryWatcherThread.watchDir();
-		
-		
+
 		Scanner scanner = new Scanner(System.in);
 		String line = scanner.nextLine();
 		while(!line.equalsIgnoreCase("exit")) {
@@ -56,7 +53,6 @@ public class DirectoryWatcherSImple {
 	}
 
 }
-
 
 
 

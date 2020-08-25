@@ -20,7 +20,7 @@ public class DirectoryWatcher extends Thread{
 	
 		File directory = new File(this.directoryPath);
 		String [] allFiles = directory.list();
-		System.out.println(allFiles.length);
+		//System.out.println(allFiles.length);
 		if(allFiles.length != this.filesCount) {
 			
 			this.filesCount = allFiles.length;
@@ -37,7 +37,23 @@ public class DirectoryWatcher extends Thread{
 		while(true) {
 			watchDir();
 			
+			if(isInterrupted()) {
+				System.out.println("isInterrupted exiting...");
+				break;
+			}
+			
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				
+				//e.printStackTrace();
+				System.out.println("InterruptedException exiting...");
+				break;
+				
+			}
+			
 		}
+		System.out.println("Watcher Thread complete");
 	}
 
 
@@ -58,9 +74,16 @@ public class DirectoryWatcher extends Thread{
 		}
 		scanner.close();
 		System.out.println("Exitted from the scanner");
+		
 		directoryWatcherThread.interrupt();
 		
 		
+		try {
+			directoryWatcherThread.join();
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		}
 		
 		System.out.println("main thread exiting...");
 	}

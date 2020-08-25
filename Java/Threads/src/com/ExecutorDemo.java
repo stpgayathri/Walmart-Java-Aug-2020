@@ -12,9 +12,16 @@ public class ExecutorDemo {
 	public static void main(String[] args) {
 		
 		
-		BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<Runnable>(25);
+		//BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<Runnable>(25);
+		BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>();
 		ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 15, 60, TimeUnit.SECONDS, workQueue);
 		
+		
+		
+		for (int i = 1; i <= 100; i++) {
+			
+			threadPoolExecutor.execute(new Task(i));
+		}
 		
 		
 		threadPoolExecutor.shutdown();

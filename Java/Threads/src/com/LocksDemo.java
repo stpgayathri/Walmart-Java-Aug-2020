@@ -27,6 +27,7 @@ public class LocksDemo implements Runnable {
 		ExecutorService executorService = Executors.newCachedThreadPool();
 		
 		LocksDemo locksDemo = new LocksDemo();
+		
 		executorService.execute(locksDemo);
 		executorService.execute(locksDemo);
 		
