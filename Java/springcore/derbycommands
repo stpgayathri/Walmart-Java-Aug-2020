@@ -1,0 +1,8 @@
+
+IJ
+
+connect 'jdbc:derby://localhost:1527/TrainingDB;create=true';
+
+create table products(id int primary key, name varchar(25), price double);
+
+show tables;
