@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 //@ComponentScan("com")
-@ComponentScan
+@ComponentScan // @EnableWebMvc
 public class AppConfig {
 
 	
